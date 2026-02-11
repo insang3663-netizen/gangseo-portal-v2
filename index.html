@@ -6,6 +6,7 @@
     <title>강서 셔츠룸 통합 예약 현황판 - 마곡, 발산, 화곡 공식 가이드</title>
     <meta name="description" content="강서구 전 지역 셔츠룸 실시간 예약 현황 및 공식 가이드. 마곡, 발산, 화곡, 강서구청 지역 최고의 셔츠룸 정보">
     <meta name="keywords" content="강서셔츠룸, 마곡셔츠룸, 발산역셔츠룸, 화곡동셔츠룸, 강서구청셔츠룸, 셔츠룸예약">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,16 +15,17 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
-            color: #ffffff;
-            line-height: 1.6;
+            font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+            background-color: #000000;
+            color: #eeeeee;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
         /* Header */
         header {
-            background-color: #111;
-            border-bottom: 1px solid #333;
+            background-color: #000000;
+            border-bottom: none;
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -41,74 +43,92 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #D4AF37;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .cta-button {
             background-color: #D4AF37;
             color: #000;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
             background-color: #e5c158;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, #1a1a1a, #2d1b4e);
+            background-color: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background-image: url('./images/hero-dark-lounge.png');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+            padding: 4rem 2rem;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 800px;
-            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
             color: #D4AF37;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.6;
+            letter-spacing: 1px;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #D4AF37;
+            display: inline-block;
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: #eeeeee;
+            margin-bottom: 0;
+            letter-spacing: 0.8px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 0.5px;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                letter-spacing: 0.3px;
+            }
         }
 
         .live-badge {
@@ -138,14 +158,16 @@
         /* Regions Section */
         .regions-section {
             padding: 4rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .section-title {
             text-align: center;
             font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 3rem;
             color: #D4AF37;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .regions-grid {
@@ -183,40 +205,43 @@
 
         .region-card h3 {
             font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
             color: #D4AF37;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .region-card p {
             font-size: 0.9rem;
-            color: #ffffff;
+            font-weight: 400;
+            color: #eeeeee;
             margin-bottom: 1rem;
+            line-height: 1.8;
         }
 
         .detail-button {
             background-color: #D4AF37;
             color: #000;
             border: none;
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            width: 100%;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
         .detail-button:hover {
             background-color: #e5c158;
-            transform: scale(1.02);
-            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
         }
 
         /* Info Section with Tabs */
         .info-section {
             padding: 4rem 0;
-            border-top: 1px solid #333;
+            background-color: #000000;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .tabs {
@@ -230,18 +255,19 @@
         .tab-button {
             background: none;
             border: none;
-            color: #888;
+            color: #999;
             padding: 1rem 1.5rem;
             cursor: pointer;
             font-weight: 600;
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
+            font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
         }
 
         .tab-button.active {
             color: #D4AF37;
             border-bottom-color: #D4AF37;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .tab-button:hover {
@@ -264,15 +290,17 @@
 
         .tab-content h3 {
             font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: #D4AF37;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .tab-content p {
-            color: #ffffff;
+            color: #eeeeee;
             line-height: 1.8;
             margin-bottom: 1rem;
+            font-weight: 400;
         }
 
         /* Floating Buttons */
@@ -282,8 +310,8 @@
             right: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            z-index: 1000;
+            gap: 0.5rem;
+            z-index: 99;
         }
 
         .floating-button {
@@ -291,30 +319,24 @@
             color: #000;
             border: none;
             padding: 1rem 1.5rem;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
         }
 
         .floating-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 12px 30px rgba(212, 175, 55, 0.6);
             background-color: #e5c158;
         }
 
         /* SEO Footer */
         .seo-footer {
-            background-color: #0a0a0a;
+            background-color: #000000;
             padding: 3rem 0;
             margin-top: 4rem;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .seo-text {
@@ -329,22 +351,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
             .regions-grid {
                 grid-template-columns: 1fr;
             }
 
             .floating-buttons {
-                bottom: 1rem;
-                right: 1rem;
-                left: 1rem;
                 flex-direction: row;
                 gap: 0.5rem;
             }
@@ -386,8 +397,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="live-badge">🔴 LIVE 예약 현황</div>
-            <h1>강서구 전 지역 셔츠룸 실시간 예약 현황 및 공식 가이드</h1>
-            <p>마곡, 발산, 화곡, 강서구청 최고의 셔츠룸 정보를 한 곳에서 만나보세요</p>
+            <h1>강서구 전 지역 셔츠룸<br>실시간 예약 현황<br>및 공식 가이드</h1>
+            <p>마곡, 발산, 화곡, 강서구청<br>최고의 셔츠룸 정보를 한 곳에서 만나보세요</p>
         </div>
     </section>
 
