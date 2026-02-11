@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강서 셔츠룸 통합 예약 현황판 - 마곡, 발산, 화곡 공식 가이드</title>
+    <meta name="description" content="강서구 전 지역 셔츠룸 실시간 예약 현황 및 공식 가이드. 마곡, 발산, 화곡, 강서구청 지역 최고의 셔츠룸 정보">
+    <meta name="keywords" content="강서셔츠룸, 마곡셔츠룸, 발산역셔츠룸, 화곡동셔츠룸, 강서구청셔츠룸, 셔츠룸예약">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #d946ef, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #d946ef, #ec4899);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(217, 70, 239, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a1a, #2d1b4e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: url('./images/hero-dark-lounge.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #d946ef, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .live-badge {
+            display: inline-block;
+            background-color: #dc2626;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Regions Section */
+        .regions-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .region-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .region-card:hover {
+            border-color: #d946ef;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(217, 70, 239, 0.2);
+        }
+
+        .region-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .region-card-content {
+            padding: 1.5rem;
+        }
+
+        .region-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #d946ef;
+        }
+
+        .region-card p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .detail-button {
+            background-color: #d946ef;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .detail-button:hover {
+            background-color: #ec4899;
+            transform: scale(1.02);
+        }
+
+        /* Info Section with Tabs */
+        .info-section {
+            padding: 4rem 0;
+            border-top: 1px solid #333;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #333;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            color: #888;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            color: #d946ef;
+            border-bottom-color: #d946ef;
+        }
+
+        .tab-button:hover {
+            color: #d946ef;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #d946ef;
+        }
+
+        .tab-content p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .floating-button {
+            background: linear-gradient(135deg, #d946ef, #ec4899);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 20px rgba(217, 70, 239, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .floating-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(217, 70, 239, 0.6);
+        }
+
+        /* SEO Footer */
+        .seo-footer {
+            background-color: #0a0a0a;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #333;
+        }
+
+        .seo-text {
+            font-size: 11px;
+            color: #444;
+            line-height: 1.8;
+            text-align: justify;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .regions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                flex-direction: row;
+                gap: 0.5rem;
+            }
+
+            .floating-button {
+                flex: 1;
+                justify-content: center;
+                padding: 0.8rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                padding: 0.8rem 1rem;
+            }
+
+            .tab-button.active {
+                border-bottom: none;
+                border-left-color: #d946ef;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🎤 강서 셔츠룸</div>
+            <button class="cta-button" onclick="alert('실시간 예약 시스템 준비 중입니다.')">실시간 예약</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="live-badge">🔴 LIVE 예약 현황</div>
+            <h1>강서구 전 지역 셔츠룸 실시간 예약 현황 및 공식 가이드</h1>
+            <p>마곡, 발산, 화곡, 강서구청 최고의 셔츠룸 정보를 한 곳에서 만나보세요</p>
+        </div>
+    </section>
+
+    <!-- Regions Section -->
+    <section class="regions-section">
+        <div class="container">
+            <h2 class="section-title">지역별 셔츠룸 현황</h2>
+            <div class="regions-grid">
+                <!-- Magok Card -->
+                <div class="region-card">
+                    <img src="./images/card-magok-interior.png" alt="마곡 셔츠룸 인테리어" class="region-card-image">
+                    <div class="region-card-content">
+                        <h3>마곡</h3>
+                        <p>마곡지구 최고의 프리미엄 셔츠룸</p>
+                        <button class="detail-button" onclick="alert('마곡 셔츠룸 상세 페이지 준비 중입니다.')">상세보기</button>
+                    </div>
+                </div>
+
+                <!-- Balsan Card -->
+                <div class="region-card">
+                    <img src="./images/card-balsan-interior.png" alt="발산역 셔츠룸 인테리어" class="region-card-image">
+                    <div class="region-card-content">
+                        <h3>발산역</h3>
+                        <p>발산역 인근 세련된 프라이빗 공간</p>
+                        <button class="detail-button" onclick="alert('발산역 셔츠룸 상세 페이지 준비 중입니다.')">상세보기</button>
+                    </div>
+                </div>
+
+                <!-- Hwagok Card -->
+                <div class="region-card">
+                    <img src="./images/card-hwagok-interior.png" alt="화곡동 셔츠룸 인테리어" class="region-card-image">
+                    <div class="region-card-content">
+                        <h3>화곡동</h3>
+                        <p>화곡동 우아한 라운지 분위기</p>
+                        <button class="detail-button" onclick="alert('화곡동 셔츠룸 상세 페이지 준비 중입니다.')">상세보기</button>
+                    </div>
+                </div>
+
+                <!-- Gangseo-gu Office Card -->
+                <div class="region-card">
+                    <img src="./images/card-gangseo-interior.png" alt="강서구청 셔츠룸 인테리어" class="region-card-image">
+                    <div class="region-card-content">
+                        <h3>강서구청</h3>
+                        <p>강서구청 인근 비즈니스 공간</p>
+                        <button class="detail-button" onclick="alert('강서구청 셔츠룸 상세 페이지 준비 중입니다.')">상세보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section with Tabs -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">통합 정보 안내</h2>
+            
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(0)">정찰제 주대 안내</button>
+                <button class="tab-button" onclick="switchTab(1)">시스템 안내</button>
+                <button class="tab-button" onclick="switchTab(2)">픽업 서비스</button>
+            </div>
+
+            <div class="tab-content active">
+                <h3>정찰제 주대 안내</h3>
+                <p>강서 셔츠룸은 투명한 정찰제 시스템을 원칙으로 합니다. 입구에서 안내해 드린 가격 외에 부당한 추가 비용은 일절 발생하지 않습니다. 맥주 무제한 시스템부터 고급 위스키 세트까지 고객님의 예산에 맞춘 다양한 구성을 제안합니다.</p>
+                <p>모든 주류는 신선하고 정품만 제공되며, 정찰제 가격에 포함된 서비스는 최고 수준의 품질을 보장합니다.</p>
+            </div>
+
+            <div class="tab-content">
+                <h3>시스템 안내</h3>
+                <p>강서 셔츠룸은 세련된 '셔츠 컨셉' 시스템을 도입하여 프로페셔널한 분위기를 제공합니다. 철저한 면접을 통해 엄선된 매니저들은 단순한 서빙을 넘어 분위기를 리드하는 프로페셔널한 매너를 갖추고 있습니다.</p>
+                <p>대규모 인원을 수용할 수 있는 대형 프라이빗 룸부터 소형 룸까지 완벽한 시설과 최신 음향 시스템을 구비하고 있습니다.</p>
+            </div>
+
+            <div class="tab-content">
+                <h3>픽업 서비스 안내</h3>
+                <p>고객 편의를 위해 마곡역, 발산역, 가양동, 등촌동 등 강서구 전 지역 무료 픽업 서비스를 운영 중입니다. 주차 걱정 없는 방문과 안전한 귀가를 돕는 풀 케어 서비스를 통해 고객님의 소중한 밤을 책임집니다.</p>
+                <p>예약 시 픽업 위치를 말씀해 주시면 정확한 시간에 맞춰 픽업해 드립니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:010-3778-6425" class="floating-button">☎ 전화문의</a>
+        <button class="floating-button" onclick="alert('카톡 채널 준비 중입니다.')">💬 카톡문의</button>
+    </div>
+
+    <!-- SEO Footer -->
+    <footer class="seo-footer">
+        <div class="seo-text">
+            <strong>[강서/마곡/발산 셔츠룸 비즈니스 및 회식 상세 가이드]</strong><br><br>
+            강서 셔츠룸은 마곡 및 발산역 인근에서 최고의 만족도를 자랑하는 프라이빗 공간으로, 비즈니스 접대와 단체 회식을 위한 최적의 시스템을 갖추고 있습니다. 격조 높은 인테리어와 투명한 정찰제 시스템을 통해 신뢰할 수 있는 모임 문화를 선도하며, 강서구 셔츠룸 중에서도 가장 높은 재방문율을 기록하고 있습니다. 발산역, 화곡역, 마곡나루 등 강서 전 지역에서 접근성이 뛰어나며, 프라이빗한 환경에서 귀한 손님을 모시기에 부족함이 없습니다.<br><br>
+            화곡동 셔츠룸의 새로운 기준을 제시하는 저희는 매일 엄격한 위생 관리와 스태프 교육을 통해 최상의 서비스를 제공합니다. 강서구청 인근이나 일반적인 강서노래방과는 차별화된 '셔츠 컨셉' 시스템을 도입하여, 세련된 분위기를 선호하는 젊은 층부터 비즈니스 고객까지 폭넓게 만족시키고 있습니다. 특히 담당 실장이 직접 룸에 상주하며 밀착 케어해 드리기 때문에 혼자 방문하시는 고객님(혼술)도 어색함 없이 최고의 시간을 보내실 수 있습니다.<br><br>
+            주대 면에서도 투명함을 원칙으로 합니다. 입구에서 안내해 드린 정찰제 가격 외에 부당한 추가 비용은 일절 발생하지 않으며, 맥주 무제한 시스템부터 고급 위스키 세트까지 고객님의 예산에 맞춘 다양한 구성을 제안합니다. 또한, 고객 편의를 위해 마곡역, 발산역, 가양동, 등촌동 등 강서구 전 지역 무료 픽업 서비스를 운영 중입니다. 주차 걱정 없는 방문과 안전한 귀가를 돕는 풀 케어 서비스를 통해 고객님의 소중한 밤을 책임집니다.<br><br>
+            강서 셔츠룸의 자존심은 결국 최상급 매니저진의 퀄리티에서 나옵니다. 철저한 면접을 통해 엄선된 매니저들은 단순한 서빙을 넘어 분위기를 리드하는 프로페셔널한 매너를 갖추고 있습니다. 대규모 인원을 수용할 수 있는 대형 프라이빗 룸부터 소형 룸까지 완벽한 시설과 최신 음향 시스템을 구비하고 있어, 마곡지구에서의 비즈니스 미팅, 팀 회식, 생일 파티 등 어떤 목적의 모임에도 최상의 만족도를 약속드립니다. 강서 셔츠룸 예약 및 실시간 룸 현황 문의는 상단 대표번호를 통해 24시간 언제든 가능합니다.
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(index) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab content
+            contents[index].classList.add('active');
+            buttons[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>
